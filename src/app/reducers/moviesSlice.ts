@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { Movie } from '../../utils/types';
+import { Movie, SortType } from '../../utils/types';
 
 type moviesState = {
   limit: number;
@@ -7,6 +7,7 @@ type moviesState = {
   totalMovies: number;
   page: number;
   totalPages: number;
+  sortField: SortType[];
 };
 
 const initialState: moviesState = {
@@ -15,6 +16,7 @@ const initialState: moviesState = {
   totalMovies: 0,
   page: 1,
   totalPages: 0,
+  sortField: [],
 };
 
 export const moviesSlice = createSlice({
@@ -33,9 +35,12 @@ export const moviesSlice = createSlice({
     setLimit: (state, action) => {
       state.limit = action.payload;
     },
+    setSort: (state, action) => {
+      state.sortField = action.payload;
+    },
   },
 });
 
-export const { setPage, setMovies, setLimit } = moviesSlice.actions;
+export const { setPage, setMovies, setLimit, setSort } = moviesSlice.actions;
 
 export const moviesReducer = moviesSlice.reducer;
