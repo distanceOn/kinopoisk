@@ -2,6 +2,7 @@ import { List, Pagination } from 'antd';
 import { useMovies } from './useMovies';
 import { MoviesFilter } from '../../molecules/MoviesFilter/MoviesFilter';
 import { Search } from '../../molecules/Search/Search';
+import { useNav } from '../../../hooks/useNav';
 
 export const MoviesList = () => {
   const {
@@ -14,6 +15,8 @@ export const MoviesList = () => {
     handleSortChange,
   } = useMovies();
 
+  const { goToMovie } = useNav();
+
   return (
     <div>
       <Search />
@@ -21,8 +24,15 @@ export const MoviesList = () => {
       <List
         loading={isFetching}
         dataSource={movies}
-        renderItem={({ name, alternativeName, year, countries, ageRating }) => (
-          <List.Item>
+        renderItem={({
+          id,
+          name,
+          alternativeName,
+          year,
+          countries,
+          ageRating,
+        }) => (
+          <List.Item onClick={() => goToMovie(id)}>
             имя {name ? name : alternativeName} <br />
             год {year} <br />
             страны {countries.map(country => country.name).join(', ')} <br />
