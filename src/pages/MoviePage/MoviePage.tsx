@@ -1,11 +1,9 @@
-import { useParams } from 'react-router-dom';
-import S from './MoviePage.module.scss';
+import { MovieCard } from '../../components/molecules/MovieCard/MovieCard';
 
 export const MoviePage = () => {
-  const { id } = useParams();
   return (
-    <div className={S.page}>
-      <p>{id}</p>
+    <div>
+      <MovieCard />
     </div>
   );
 };

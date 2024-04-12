@@ -1,15 +1,15 @@
 import { useEffect } from 'react';
-import { useGetMoviesQuery } from '../../../app/api/moviesApi';
-import { useAppDispatch, useAppSelector } from '../../../app/reduxHooks';
+import { useGetMoviesQuery } from '../../app/api/moviesApi';
+import { useAppDispatch, useAppSelector } from '../../app/reduxHooks';
 import {
   setLimit,
   setMovies,
   setPage,
   setSort,
-} from '../../../app/reducers/moviesSlice';
-import { SortType } from '../../../utils/types';
+} from '../../app/reducers/moviesSlice';
+import { SortType } from '../../utils/types';
 
-export const useMovies = () => {
+export const useMoviesService = () => {
   const dispatch = useAppDispatch();
   const { limit, movies, totalMovies, page, sortField, search } =
     useAppSelector(state => state.movies);

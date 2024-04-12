@@ -1,5 +1,5 @@
 import { List, Pagination } from 'antd';
-import { useMovies } from './useMovies';
+import { useMoviesService } from '../../../hooks/api/useMovies';
 import { MoviesFilter } from '../../molecules/MoviesFilter/MoviesFilter';
 import { Search } from '../../molecules/Search/Search';
 import { useNav } from '../../../hooks/useNav';
@@ -13,7 +13,7 @@ export const MoviesList = () => {
     isFetching,
     handlePageChange,
     handleSortChange,
-  } = useMovies();
+  } = useMoviesService();
 
   const { goToMovie } = useNav();
 
