@@ -1,5 +1,7 @@
-import { List, Pagination, Select } from 'antd';
+import { List, Pagination } from 'antd';
 import { useMovies } from './useMovies';
+import { MoviesFilter } from '../../molecules/MoviesFilter/MoviesFilter';
+import { Search } from '../../molecules/Search/Search';
 
 export const MoviesList = () => {
   const {
@@ -12,34 +14,10 @@ export const MoviesList = () => {
     handleSortChange,
   } = useMovies();
 
-  const filterOption = (
-    input: string,
-    option?: { label: string; value: string }
-  ) => (option?.label ?? '').toLowerCase().includes(input.toLowerCase());
-
   return (
     <div>
-      <Select
-        mode='multiple'
-        placeholder='Фильтровать по'
-        optionFilterProp='children'
-        onChange={handleSortChange}
-        filterOption={filterOption}
-        options={[
-          {
-            value: 'year',
-            label: 'Год',
-          },
-          {
-            value: 'countries.name',
-            label: 'Страна',
-          },
-          {
-            value: 'ageRating',
-            label: 'Возрастной рейтинг',
-          },
-        ]}
-      />
+      <Search />
+      <MoviesFilter handleSortChange={handleSortChange} />
       <List
         loading={isFetching}
         dataSource={movies}

@@ -4,12 +4,16 @@ type getMoviesType = {
   page: number;
   limit: number;
   sortField?: string[];
+  search?: string;
 };
 
 export const moviesApi = baseApi.injectEndpoints({
   endpoints: build => ({
     getMovies: build.query({
-      query: ({ page, limit, sortField }: getMoviesType) => {
+      query: ({ page, limit, sortField, search }: getMoviesType) => {
+        if (search) {
+          return `movie/search?page=${page}&limit=${limit}&query=${search}`;
+        }
         let totalUrl = `movie?page=${page}&limit=${limit}`;
         if (sortField && sortField.length > 0) {
           const sortParams = sortField

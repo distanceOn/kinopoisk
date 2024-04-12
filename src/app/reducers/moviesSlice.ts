@@ -8,6 +8,7 @@ type moviesState = {
   page: number;
   totalPages: number;
   sortField: SortType[];
+  search: string;
 };
 
 const initialState: moviesState = {
@@ -17,6 +18,7 @@ const initialState: moviesState = {
   page: 1,
   totalPages: 0,
   sortField: [],
+  search: '',
 };
 
 export const moviesSlice = createSlice({
@@ -38,9 +40,13 @@ export const moviesSlice = createSlice({
     setSort: (state, action) => {
       state.sortField = action.payload;
     },
+    setSearch: (state, action) => {
+      state.search = action.payload;
+    },
   },
 });
 
-export const { setPage, setMovies, setLimit, setSort } = moviesSlice.actions;
+export const { setPage, setMovies, setLimit, setSort, setSearch } =
+  moviesSlice.actions;
 
 export const moviesReducer = moviesSlice.reducer;

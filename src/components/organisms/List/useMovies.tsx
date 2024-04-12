@@ -11,14 +11,15 @@ import { SortType } from '../../../utils/types';
 
 export const useMovies = () => {
   const dispatch = useAppDispatch();
-  const { limit, movies, totalMovies, page, sortField } = useAppSelector(
-    state => state.movies
-  );
+  const { limit, movies, totalMovies, page, sortField, search } =
+    useAppSelector(state => state.movies);
 
   const { data, isFetching, isSuccess } = useGetMoviesQuery(
-    sortField && sortField.length > 0
-      ? { page, limit, sortField }
-      : { page, limit }
+    search
+      ? { page, limit, search }
+      : sortField && sortField.length > 0
+        ? { page, limit, sortField }
+        : { page, limit }
   );
 
   useEffect(() => {
