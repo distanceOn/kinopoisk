@@ -1,18 +1,7 @@
-import { ListType } from '../../../utils/types';
 import { PaginationList } from '../../molecules/PaginationList/PaginationList';
 import { RadioBtns } from '../../molecules/RadioBtns/RadioBtns';
+import { RadioPaginationProps } from './types';
 
-type RadioPaginationProps<T> = {
-  isSeries: boolean;
-  handleChangeDetails: (value: ListType) => void;
-  selectedValue: ListType;
-  totalData: T[];
-  currentPage: number;
-  limit: number;
-  isFetching: boolean;
-  handlePageChange: (newPage: number, newPageSize: number) => void;
-  handleClick: (id: number) => void;
-};
 export const RadioPagination = <T,>({
   isSeries,
   handleChangeDetails,

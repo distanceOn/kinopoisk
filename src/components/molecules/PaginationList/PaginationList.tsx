@@ -1,18 +1,7 @@
 import { Empty, List, Pagination } from 'antd';
 
 import { PaginationItem } from '../../atoms/PaginationItem/PaginationItem';
-import { ListType } from '../../../utils/types';
-
-type PaginationListProps<T> = {
-  type: ListType;
-  data: T[];
-  page: number;
-  limit: number;
-  totalData: number;
-  isFetching: boolean;
-  handlePageChange: (newPage: number, newPageSize: number) => void;
-  onClick: (id: number) => void;
-};
+import { PaginationListProps } from './types';
 
 export const PaginationList = <T,>({
   type,

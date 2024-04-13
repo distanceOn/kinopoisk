@@ -1,15 +1,7 @@
 import { Radio, RadioChangeEvent } from 'antd';
-import { ListType } from '../../../utils/types';
+import { RadioBtnsProps } from './types';
 
-export const RadioBtns = ({
-  isSeries,
-  value,
-  onChange,
-}: {
-  isSeries: boolean;
-  value: string;
-  onChange: (value: ListType) => void;
-}) => {
+export const RadioBtns = ({ isSeries, value, onChange }: RadioBtnsProps) => {
   const handleChange = (e: RadioChangeEvent) => {
     onChange(e.target.value);
   };

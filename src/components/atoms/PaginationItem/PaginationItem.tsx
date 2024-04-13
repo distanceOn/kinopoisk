@@ -1,11 +1,6 @@
 import { List } from 'antd';
-import { ListType, Movie, Person, Review, Season } from '../../../utils/types';
-
-type PaginationItemProps<T> = {
-  type: ListType;
-  renderItem: T;
-  onClick: (id: number) => void;
-};
+import { Movie, Person, Review, Season } from '../../../utils/types';
+import { PaginationItemProps } from './types';
 
 export const PaginationItem = <T,>({
   type,

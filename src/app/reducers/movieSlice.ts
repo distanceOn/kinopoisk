@@ -1,25 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { Poster, SimilarMovie } from '../../utils/types';
-
-type movieState = {
-  name: string;
-  alternativeName: string;
-  description: string;
-  rating: {
-    imdb: number;
-    kp: number;
-  };
-  persons: [];
-  isSeries: boolean;
-  seasonsInfo: [];
-  poster: {
-    url: string;
-    previewUrl: string;
-  };
-  reviews: [];
-  posters: Poster[];
-  similarMovies: SimilarMovie[];
-};
+import { movieState } from './types';
 
 const initialState: movieState = {
   name: '',

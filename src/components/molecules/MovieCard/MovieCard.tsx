@@ -1,16 +1,6 @@
 import { Card, Col, Image, Rate, Row } from 'antd';
 import Placeholder from '../../../app/assets/imgs/placeholder.png';
-
-type MovieCardProps = {
-  isFetching: boolean;
-  name: string;
-  description: string;
-  totalRating: number;
-  poster: {
-    url: string;
-    previewUrl: string;
-  };
-};
+import { MovieCardProps } from './types';
 
 export const MovieCard = ({
   isFetching,
