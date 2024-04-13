@@ -1,13 +1,12 @@
 import { useParams } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../app/reduxHooks';
+import { useAppDispatch } from '../../app/reduxHooks';
 import { useGetMovieQuery } from '../../app/api/moviesApi';
 import { useEffect } from 'react';
 import { resetMovie, setMovie } from '../../app/reducers/movieSlice';
 
 export const useMovieService = () => {
   const dispatch = useAppDispatch();
-  const { name, description, rating, poster, persons, seasonsInfo } =
-    useAppSelector(state => state.movie);
+
   const { id } = useParams();
 
   const { data, isFetching, isSuccess } = useGetMovieQuery(id);
@@ -20,15 +19,8 @@ export const useMovieService = () => {
     }
   }, [data, isSuccess]);
 
-  const totalRating = rating.imdb !== 0 ? rating.imdb : rating.kp;
-
   return {
     isFetching,
-    name,
-    description,
-    totalRating,
-    poster,
-    persons,
-    seasonsInfo,
+    isSuccess,
   };
 };

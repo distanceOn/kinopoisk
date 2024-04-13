@@ -13,6 +13,11 @@ export type Person = {
   photo: string;
 };
 
+export type Season = {
+  episodesCount: number;
+  number: number;
+};
+
 export type ListType = 'movies' | 'actors' | 'reviews' | 'seasons';
 
 export type SortType = 'year' | 'countries.name' | 'ageRating';

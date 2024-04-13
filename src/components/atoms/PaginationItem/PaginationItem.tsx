@@ -1,5 +1,5 @@
 import { List } from 'antd';
-import { ListType, Movie, Person } from '../../../utils/types';
+import { ListType, Movie, Person, Season } from '../../../utils/types';
 
 type PaginationItemProps<T> = {
   type: ListType;
@@ -36,6 +36,17 @@ export const PaginationItem = <T,>({
         {name}
         <br />
         {description}
+      </List.Item>
+    );
+  }
+
+  if (type === 'seasons') {
+    const { episodesCount, number } = renderItem as Season;
+
+    return (
+      <List.Item>
+        Сезон: {number} <br />
+        Количество серий: {episodesCount}
       </List.Item>
     );
   }

@@ -16,7 +16,6 @@ export const MovieDetails = () => {
     currentPage,
     limit,
     handlePageChange,
-
     handleClick,
   } = useMovieDetails();
 
