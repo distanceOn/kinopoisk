@@ -6,10 +6,10 @@ import { useAppSelector } from '../../../app/reduxHooks';
 export const useMovieDetails = () => {
   const { isFetching } = useMovieService();
 
-  const { name, description, rating, poster, persons, seasonsInfo } =
+  const { name, description, rating, poster, persons, isSeries, seasonsInfo } =
     useAppSelector(state => state.movie);
 
-  const totalRating = rating.imdb !== 0 ? rating.imdb : rating.kp;
+  const totalRating = rating.imdb !== 0 ? rating.imdb / 2 : rating.kp / 2;
 
   const [selectedValue, setSelectedValue] = useState<ListType>('actors');
   const [totalData, setTotalData] = useState([]);
@@ -53,5 +53,6 @@ export const useMovieDetails = () => {
     limit,
     handlePageChange,
     handleClick,
+    isSeries,
   };
 };

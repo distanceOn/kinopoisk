@@ -17,6 +17,7 @@ export const MovieDetails = () => {
     limit,
     handlePageChange,
     handleClick,
+    isSeries,
   } = useMovieDetails();
 
   return (
@@ -28,7 +29,11 @@ export const MovieDetails = () => {
         totalRating={totalRating}
         poster={poster}
       />
-      <RadioBtns onChange={handleChangeDetails} value={selectedValue} />
+      <RadioBtns
+        isSeries={isSeries}
+        onChange={handleChangeDetails}
+        value={selectedValue}
+      />
       <PaginationList
         type={selectedValue}
         data={totalData.slice((currentPage - 1) * limit, currentPage * limit)}

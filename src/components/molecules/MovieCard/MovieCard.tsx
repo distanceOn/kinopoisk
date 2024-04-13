@@ -35,7 +35,7 @@ export const MovieCard = ({
       <Card.Meta title={name} description={description} />
       <Row style={{ marginTop: 10 }}>
         <Col span={12}>
-          <Rate disabled defaultValue={totalRating} />
+          <Rate disabled value={totalRating} />
         </Col>
       </Row>
     </Card>

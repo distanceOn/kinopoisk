@@ -14,6 +14,7 @@ type movieState = {
     url: string;
     previewUrl: string;
   };
+  reviews: [];
 };
 
 const initialState: movieState = {
@@ -30,6 +31,7 @@ const initialState: movieState = {
     url: '',
     previewUrl: '',
   },
+  reviews: [],
 };
 
 export const movieSlice = createSlice({
@@ -45,10 +47,13 @@ export const movieSlice = createSlice({
       state.seasonsInfo = payload.seasonsInfo;
       state.poster = payload.poster;
     },
+    setReviews: (state, { payload }) => {
+      state.reviews = payload;
+    },
     resetMovie: () => initialState,
   },
 });
 
-export const { setMovie, resetMovie } = movieSlice.actions;
+export const { setMovie, setReviews, resetMovie } = movieSlice.actions;
 
 export const movieReducer = movieSlice.reducer;
