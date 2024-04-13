@@ -16,6 +16,7 @@ export const ImgCarousel: React.FC<PosterCarouselProps> = ({ type, data }) => {
   }
   return (
     <Carousel
+      style={{ width: '30vw', height: 'fit-content', maxHeight: '20vw' }}
       autoplay
       dotPosition='top'
       fade

@@ -5,6 +5,7 @@ import { useNav } from '../../hooks/useNav';
 import { MovieCard } from '../../components/molecules/MovieCard/MovieCard';
 import { ImgCarousel } from '../../components/molecules/ImgCarousel/ImgCarousel';
 import { RadioPagination } from '../../components/organisms/RadioPagination/RadioPagination';
+import { DetailsTemplate } from '../../components/templates/DetailsTemplate/DetailsTemplate';
 
 export const MoviePage = () => {
   const {
@@ -33,15 +34,19 @@ export const MoviePage = () => {
         <Spin />
       ) : (
         <>
-          <MovieCard
-            isFetching={isFetching}
-            name={totalName}
-            description={description}
-            totalRating={totalRating}
-            poster={poster}
+          <DetailsTemplate
+            card={
+              <MovieCard
+                isFetching={isFetching}
+                name={totalName}
+                description={description}
+                totalRating={totalRating}
+                poster={poster}
+              />
+            }
+            carousel1={<ImgCarousel type='poster' data={posters} />}
+            carousel2={<ImgCarousel type='similar' data={similarMovies} />}
           />
-          <ImgCarousel type='poster' data={posters} />
-          <ImgCarousel type='similar' data={similarMovies} />
           <RadioPagination
             isSeries={isSeries}
             handleChangeDetails={handleChangeDetails}
