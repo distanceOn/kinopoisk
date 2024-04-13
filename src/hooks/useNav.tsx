@@ -6,5 +6,9 @@ export const useNav = () => {
     navigate(`/${id}`);
   };
 
-  return { goToMovie };
+  const goToMovies = () => {
+    navigate('/');
+  };
+
+  return { goToMovies, goToMovie };
 };

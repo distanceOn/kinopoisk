@@ -4,6 +4,8 @@ import { MovieCard } from '../../molecules/MovieCard/MovieCard';
 import { PaginationList } from '../../molecules/PaginationList/PaginationList';
 import { RadioBtns } from '../../molecules/RadioBtns/RadioBtns';
 import { useMovieDetails } from './useMovieDetails';
+import { Btn } from '../../atoms/Btn/Btn';
+import { useNav } from '../../../hooks/useNav';
 
 export const MovieDetails = () => {
   const {
@@ -24,10 +26,13 @@ export const MovieDetails = () => {
     similarMovies,
   } = useMovieDetails();
 
+  const { goToMovies } = useNav();
+
   return isFetching ? (
     <Spin />
   ) : (
     <div>
+      <Btn text='На главную' handleClick={goToMovies} />
       <MovieCard
         isFetching={isFetching}
         name={name}
