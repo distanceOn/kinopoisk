@@ -7,12 +7,7 @@ export const Btn = ({
   handleClick: () => void;
 }) => {
   return (
-    <Button
-      type='primary'
-      shape='round'
-      icon={<i className='fas fa-arrow-left'></i>}
-      onClick={handleClick}
-    >
+    <Button type='primary' shape='round' onClick={handleClick}>
       {text}
     </Button>
   );

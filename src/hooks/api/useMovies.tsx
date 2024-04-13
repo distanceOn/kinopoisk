@@ -14,19 +14,19 @@ export const useMoviesService = () => {
   const { limit, movies, totalMovies, page, sortField, search } =
     useAppSelector(state => state.movies);
 
-  const { data, isFetching, isSuccess } = useGetMoviesQuery(
-    search
-      ? { page, limit, search }
-      : sortField
-        ? { page, limit, sortField }
-        : { page, limit }
-  );
+  const totalQuery = search
+    ? { page, limit, search }
+    : sortField
+      ? { page, limit, sortField }
+      : { page, limit };
+
+  const { data, isFetching, isSuccess } = useGetMoviesQuery(totalQuery);
 
   useEffect(() => {
     if (isSuccess) {
       dispatch(setMovies(data));
-      console.log(data.docs);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, isFetching, sortField]);
 
   const handlePageChange = (newPage: number, newPageSize: number) => {

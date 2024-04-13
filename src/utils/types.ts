@@ -42,10 +42,6 @@ export type SimilarMovie = {
   };
 };
 
-export type getReviewsType = {
-  id: number;
-};
-
 export type ListType = 'movies' | 'actors' | 'reviews' | 'seasons';
 
 export type SortType = 'year' | 'countries.name' | 'ageRating';

@@ -1,6 +1,5 @@
 import { useMoviesService } from '../../../hooks/api/useMovies';
 import { MoviesFilter } from '../../molecules/MoviesFilter/MoviesFilter';
-import { Search } from '../../molecules/Search/Search';
 import { PaginationList } from '../../molecules/PaginationList/PaginationList';
 import { useNav } from '../../../hooks/useNav';
 
@@ -20,7 +19,6 @@ export const MoviesList = () => {
 
   return (
     <div>
-      <Search />
       <MoviesFilter value={sortField} handleSortChange={handleSortChange} />
       <PaginationList
         type='movies'

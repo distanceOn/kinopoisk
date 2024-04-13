@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react';
 import { ListType } from '../../utils/types';
 import { useAppSelector } from '../../app/reduxHooks';
-import { useMovieService } from '../../hooks/api/useMovieService';
 import { usePagination } from '../../hooks/usePagination';
 
 export const useMovieDetails = () => {
   const { currentPage, setCurrentPage, limit, handlePageChange } =
     usePagination();
 
-  const { isFetching } = useMovieService();
   const {
     name,
     alternativeName,
@@ -47,10 +45,10 @@ export const useMovieDetails = () => {
     if (selectedValue === 'reviews') {
       setTotalData(reviews);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedValue, persons, seasonsInfo, reviews]);
 
   return {
-    isFetching,
     totalName,
     description,
     totalRating,

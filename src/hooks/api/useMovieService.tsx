@@ -19,25 +19,20 @@ export const useMovieService = () => {
   const { id } = useParams();
 
   const { data, isFetching, isSuccess } = useGetMovieQuery(id);
-  const { data: reviewsData, isSuccess: reviewsSuccess } = useGetReviewsQuery({
-    id: Number(id),
-  });
-  const { data: postersData, isSuccess: postersSuccess } = useGetPostersQuery({
-    id: Number(id),
-  });
+  const { data: reviewsData, isSuccess: reviewsSuccess } =
+    useGetReviewsQuery(id);
+  const { data: postersData, isSuccess: postersSuccess } =
+    useGetPostersQuery(id);
 
   useEffect(() => {
     dispatch(resetMovie());
     if (isSuccess) {
-      console.log(data);
       dispatch(setMovie(data));
     }
     if (reviewsSuccess) {
-      console.log(reviewsData);
       dispatch(setReviews(reviewsData.docs));
     }
     if (postersSuccess) {
-      console.log(postersData);
       dispatch(setPosters(postersData.docs));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

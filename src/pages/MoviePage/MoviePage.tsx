@@ -6,10 +6,10 @@ import { MovieCard } from '../../components/molecules/MovieCard/MovieCard';
 import { ImgCarousel } from '../../components/molecules/ImgCarousel/ImgCarousel';
 import { RadioPagination } from '../../components/organisms/RadioPagination/RadioPagination';
 import { DetailsTemplate } from '../../components/templates/DetailsTemplate/DetailsTemplate';
+import { useMovieService } from '../../hooks/api/useMovieService';
 
 export const MoviePage = () => {
   const {
-    isFetching,
     totalName,
     description,
     totalRating,
@@ -25,6 +25,8 @@ export const MoviePage = () => {
     posters,
     similarMovies,
   } = useMovieDetails();
+
+  const { isFetching } = useMovieService();
 
   const { goToMovies } = useNav();
   return (
