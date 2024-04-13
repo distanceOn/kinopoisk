@@ -1,15 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { Movie, SortType } from '../../utils/types';
-
-type moviesState = {
-  limit: number;
-  movies: Movie[];
-  totalMovies: number;
-  page: number;
-  totalPages: number;
-  sortField: SortType[];
-  search: string;
-};
+import { moviesState } from './types';
 
 const initialState: moviesState = {
   limit: 10,
@@ -17,7 +7,7 @@ const initialState: moviesState = {
   totalMovies: 0,
   page: 1,
   totalPages: 0,
-  sortField: [],
+  sortField: null,
   search: '',
 };
 

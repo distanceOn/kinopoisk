@@ -1,37 +1,19 @@
 import { Select } from 'antd';
-import { SortType } from '../../../utils/types';
+import { MoviesFilterProps } from './types';
+import { filterOption, options } from './utils';
 
-type MoviesFilterProps = {
-  handleSortChange: (newSort: SortType) => void;
-};
-
-export const MoviesFilter = ({ handleSortChange }: MoviesFilterProps) => {
-  const filterOption = (
-    input: string,
-    option?: { label: string; value: string }
-  ) => (option?.label ?? '').toLowerCase().includes(input.toLowerCase());
-
+export const MoviesFilter = ({
+  value,
+  handleSortChange,
+}: MoviesFilterProps) => {
   return (
     <Select
-      mode='multiple'
+      value={value}
       placeholder='Фильтровать по'
       optionFilterProp='children'
       onChange={handleSortChange}
       filterOption={filterOption}
-      options={[
-        {
-          value: 'year',
-          label: 'Год',
-        },
-        {
-          value: 'countries.name',
-          label: 'Страна',
-        },
-        {
-          value: 'ageRating',
-          label: 'Возрастной рейтинг',
-        },
-      ]}
+      options={options}
     />
   );
 };

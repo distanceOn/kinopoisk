@@ -1,32 +1,32 @@
 import { useEffect } from 'react';
-import { useGetMoviesQuery } from '../../../app/api/moviesApi';
-import { useAppDispatch, useAppSelector } from '../../../app/reduxHooks';
+import { useGetMoviesQuery } from '../../app/api/moviesApi';
+import { useAppDispatch, useAppSelector } from '../../app/reduxHooks';
 import {
   setLimit,
   setMovies,
   setPage,
   setSort,
-} from '../../../app/reducers/moviesSlice';
-import { SortType } from '../../../utils/types';
+} from '../../app/reducers/moviesSlice';
+import { SortType } from '../../utils/types';
 
-export const useMovies = () => {
+export const useMoviesService = () => {
   const dispatch = useAppDispatch();
   const { limit, movies, totalMovies, page, sortField, search } =
     useAppSelector(state => state.movies);
 
-  const { data, isFetching, isSuccess } = useGetMoviesQuery(
-    search
-      ? { page, limit, search }
-      : sortField && sortField.length > 0
-        ? { page, limit, sortField }
-        : { page, limit }
-  );
+  const totalQuery = search
+    ? { page, limit, search }
+    : sortField
+      ? { page, limit, sortField }
+      : { page, limit };
+
+  const { data, isFetching, isSuccess } = useGetMoviesQuery(totalQuery);
 
   useEffect(() => {
     if (isSuccess) {
       dispatch(setMovies(data));
-      console.log(data.docs);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, isFetching, sortField]);
 
   const handlePageChange = (newPage: number, newPageSize: number) => {
@@ -46,5 +46,6 @@ export const useMovies = () => {
     isFetching,
     handlePageChange,
     handleSortChange,
+    sortField,
   };
 };
