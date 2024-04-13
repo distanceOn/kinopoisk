@@ -32,6 +32,15 @@ export type Poster = {
   previewUrl: string;
 };
 
+export type SimilarMovie = {
+  id: number;
+  name: string;
+  poster: {
+    url: string;
+    previewUrl: string
+  };
+};
+
 export type getReviewsType = {
   page: number;
   limit: number;

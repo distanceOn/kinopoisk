@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { Poster } from '../../utils/types';
+import { Poster, SimilarMovie } from '../../utils/types';
 
 type movieState = {
   name: string;
@@ -17,6 +17,7 @@ type movieState = {
   };
   reviews: [];
   posters: Poster[];
+  similarMovies: SimilarMovie[];
 };
 
 const initialState: movieState = {
@@ -35,6 +36,7 @@ const initialState: movieState = {
   },
   reviews: [],
   posters: [],
+  similarMovies: [],
 };
 
 export const movieSlice = createSlice({
@@ -49,6 +51,7 @@ export const movieSlice = createSlice({
       state.isSeries = payload.isSeries;
       state.seasonsInfo = payload.seasonsInfo;
       state.poster = payload.poster;
+      state.similarMovies = payload.similarMovies;
     },
     setReviews: (state, { payload }) => {
       state.reviews = payload;

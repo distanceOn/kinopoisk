@@ -21,6 +21,7 @@ export const MovieDetails = () => {
     handleClick,
     isSeries,
     posters,
+    similarMovies,
   } = useMovieDetails();
 
   return isFetching ? (
@@ -34,7 +35,8 @@ export const MovieDetails = () => {
         totalRating={totalRating}
         poster={poster}
       />
-      <ImgCarousel data={posters} />
+      <ImgCarousel type='poster' data={posters} />
+      <ImgCarousel type='similar' data={similarMovies} />
       <RadioBtns
         isSeries={isSeries}
         onChange={handleChangeDetails}
