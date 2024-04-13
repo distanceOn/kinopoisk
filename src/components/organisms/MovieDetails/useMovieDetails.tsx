@@ -1,21 +1,30 @@
 import { useEffect, useState } from 'react';
 import { ListType } from '../../../utils/types';
-import { useMovieService } from '../../../hooks/api/useMovieService';
 import { useAppSelector } from '../../../app/reduxHooks';
+import { useMovieService } from '../../../hooks/api/useMovieService';
 
 export const useMovieDetails = () => {
-  const { isFetching } = useMovieService();
+  const {
+    name,
+    description,
+    rating,
+    poster,
+    persons,
+    isSeries,
+    seasonsInfo,
+    reviews,
+  } = useAppSelector(state => state.movie);
 
-  const { name, description, rating, poster, persons, isSeries, seasonsInfo } =
-    useAppSelector(state => state.movie);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [limit, setLimit] = useState(10);
+
+  const { isFetching } = useMovieService({ page: currentPage, limit });
 
   const totalRating = rating.imdb !== 0 ? rating.imdb / 2 : rating.kp / 2;
 
   const [selectedValue, setSelectedValue] = useState<ListType>('actors');
-  const [totalData, setTotalData] = useState([]);
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const [limit, setLimit] = useState(10);
+  const [totalData, setTotalData] = useState([]);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -25,7 +34,14 @@ export const useMovieDetails = () => {
     if (selectedValue === 'seasons') {
       setTotalData(seasonsInfo);
     }
-  }, [selectedValue, persons, seasonsInfo]);
+    if (selectedValue === 'reviews') {
+      setTotalData(reviews);
+    }
+  }, [selectedValue, persons, seasonsInfo, reviews]);
+
+  useEffect(() => {
+    console.log('DATA', totalData);
+  }, [totalData]);
 
   const handlePageChange = (newPage: number, newPageSize: number) => {
     setCurrentPage(newPage);

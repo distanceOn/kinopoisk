@@ -1,3 +1,4 @@
+import { getReviewsType } from '../../utils/types';
 import { baseApi } from './baseApi';
 
 type getMoviesType = {
@@ -28,7 +29,12 @@ export const moviesApi = baseApi.injectEndpoints({
     getMovie: build.query({
       query: id => `movie/${id}`,
     }),
+    getReviews: build.query({
+      query: ({ page, limit, id }: getReviewsType) =>
+        `review?page=${page}&limit=${limit}&id=${id}`,
+    }),
   }),
 });
 
-export const { useGetMoviesQuery, useGetMovieQuery } = moviesApi;
+export const { useGetMoviesQuery, useGetMovieQuery, useGetReviewsQuery } =
+  moviesApi;

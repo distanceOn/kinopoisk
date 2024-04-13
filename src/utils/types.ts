@@ -18,6 +18,20 @@ export type Season = {
   number: number;
 };
 
+export type Review = {
+  author: string;
+
+  date: string;
+  review: string;
+  type: string;
+};
+
+export type getReviewsType = {
+  page: number;
+  limit: number;
+  id: number;
+};
+
 export type ListType = 'movies' | 'actors' | 'reviews' | 'seasons';
 
 export type SortType = 'year' | 'countries.name' | 'ageRating';
