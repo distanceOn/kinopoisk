@@ -7,7 +7,7 @@ type moviesState = {
   totalMovies: number;
   page: number;
   totalPages: number;
-  sortField: SortType[];
+  sortField: SortType | null;
   search: string;
 };
 
@@ -17,7 +17,7 @@ const initialState: moviesState = {
   totalMovies: 0,
   page: 1,
   totalPages: 0,
-  sortField: [],
+  sortField: null,
   search: '',
 };
 

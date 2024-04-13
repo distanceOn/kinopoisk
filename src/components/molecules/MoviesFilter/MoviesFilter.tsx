@@ -2,10 +2,14 @@ import { Select } from 'antd';
 import { SortType } from '../../../utils/types';
 
 type MoviesFilterProps = {
+  value: SortType | null;
   handleSortChange: (newSort: SortType) => void;
 };
 
-export const MoviesFilter = ({ handleSortChange }: MoviesFilterProps) => {
+export const MoviesFilter = ({
+  value,
+  handleSortChange,
+}: MoviesFilterProps) => {
   const filterOption = (
     input: string,
     option?: { label: string; value: string }
@@ -13,7 +17,7 @@ export const MoviesFilter = ({ handleSortChange }: MoviesFilterProps) => {
 
   return (
     <Select
-      mode='multiple'
+      value={value}
       placeholder='Фильтровать по'
       optionFilterProp='children'
       onChange={handleSortChange}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Carousel, Image } from 'antd';
+import { Carousel, Empty, Image } from 'antd';
 import { Poster, SimilarMovie } from '../../../utils/types';
 import S from './ImgCarousel.module.scss';
 import { useNav } from '../../../hooks/useNav';
@@ -11,6 +11,9 @@ type PosterCarouselProps = {
 
 export const ImgCarousel: React.FC<PosterCarouselProps> = ({ type, data }) => {
   const { goToMovie } = useNav();
+  if (!data) {
+    return <Empty description='Нет данных' />;
+  }
   return (
     <Carousel
       autoplay

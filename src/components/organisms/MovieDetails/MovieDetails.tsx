@@ -10,7 +10,7 @@ import { useNav } from '../../../hooks/useNav';
 export const MovieDetails = () => {
   const {
     isFetching,
-    name,
+    totalName,
     description,
     totalRating,
     poster,
@@ -28,6 +28,8 @@ export const MovieDetails = () => {
 
   const { goToMovies } = useNav();
 
+  console.log(totalName);
+
   return isFetching ? (
     <Spin />
   ) : (
@@ -35,7 +37,7 @@ export const MovieDetails = () => {
       <Btn text='На главную' handleClick={goToMovies} />
       <MovieCard
         isFetching={isFetching}
-        name={name}
+        name={totalName}
         description={description}
         totalRating={totalRating}
         poster={poster}

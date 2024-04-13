@@ -1,10 +1,11 @@
 import { Input } from 'antd';
-import { useAppDispatch } from '../../../app/reduxHooks';
+import { useAppDispatch, useAppSelector } from '../../../app/reduxHooks';
 import { setSearch } from '../../../app/reducers/moviesSlice';
 import { debounce } from 'lodash';
-import { SetStateAction, useRef, useState } from 'react';
+import { SetStateAction, useEffect, useRef, useState } from 'react';
 
 export const Search = () => {
+  const { search } = useAppSelector(state => state.movies);
   const [localSearch, setLocalSearch] = useState('');
   const dispatch = useAppDispatch();
 
@@ -20,6 +21,12 @@ export const Search = () => {
     setLocalSearch(event.target.value);
     debouncedSetSearchRef.current(event.target.value);
   };
+
+  useEffect(() => {
+    if (localSearch === '' && search !== '') {
+      setLocalSearch(search);
+    }
+  }, []);
 
   return <Input onChange={handleOnChange} value={localSearch} />;
 };

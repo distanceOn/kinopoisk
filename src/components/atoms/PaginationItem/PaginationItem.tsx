@@ -27,13 +27,13 @@ export const PaginationItem = <T,>({
   }
 
   if (type === 'actors') {
-    const { description, name, photo } = renderItem as Person;
+    const { description, name, photo, enName } = renderItem as Person;
 
     return (
       <List.Item>
         {/* <img src={photo} alt={name} /> */}
         <br />
-        {name}
+        {name ? name : enName}
         <br />
         {description}
       </List.Item>

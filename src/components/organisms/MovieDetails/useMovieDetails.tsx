@@ -11,6 +11,7 @@ export const useMovieDetails = () => {
   const { isFetching } = useMovieService({ page: currentPage, limit });
   const {
     name,
+    alternativeName,
     description,
     rating,
     poster,
@@ -22,6 +23,7 @@ export const useMovieDetails = () => {
     similarMovies,
   } = useAppSelector(state => state.movie);
 
+  const totalName = name ? name : alternativeName;
   const totalRating = rating.imdb !== 0 ? rating.imdb / 2 : rating.kp / 2;
 
   const [selectedValue, setSelectedValue] = useState<ListType>('actors');
@@ -49,7 +51,7 @@ export const useMovieDetails = () => {
 
   return {
     isFetching,
-    name,
+    totalName,
     description,
     totalRating,
     poster,

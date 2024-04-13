@@ -1,10 +1,10 @@
-import { getReviewsType } from '../../utils/types';
+import { SortType, getReviewsType } from '../../utils/types';
 import { baseApi } from './baseApi';
 
 type getMoviesType = {
   page: number;
   limit: number;
-  sortField?: string[];
+  sortField?: SortType;
   search?: string;
 };
 
@@ -16,11 +16,8 @@ export const moviesApi = baseApi.injectEndpoints({
           return `movie/search?page=${page}&limit=${limit}&query=${search}`;
         }
         let totalUrl = `movie?page=${page}&limit=${limit}`;
-        if (sortField && sortField.length > 0) {
-          const sortParams = sortField
-            .map(field => `&sortField=${field}&sortType=-1`)
-            .join('');
-          totalUrl += sortParams;
+        if (sortField) {
+          totalUrl += `&sortField=${sortField}&sortType=-1`;
         }
         return totalUrl;
       },

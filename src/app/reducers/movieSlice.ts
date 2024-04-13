@@ -3,6 +3,7 @@ import { Poster, SimilarMovie } from '../../utils/types';
 
 type movieState = {
   name: string;
+  alternativeName: string;
   description: string;
   rating: {
     imdb: number;
@@ -22,6 +23,7 @@ type movieState = {
 
 const initialState: movieState = {
   name: '',
+  alternativeName: '',
   description: '',
   rating: {
     imdb: 0,
@@ -45,6 +47,7 @@ export const movieSlice = createSlice({
   reducers: {
     setMovie: (state, { payload }) => {
       state.name = payload.name;
+      state.alternativeName = payload.alternativeName;
       state.description = payload.description;
       state.rating = payload.rating;
       state.persons = payload.persons;

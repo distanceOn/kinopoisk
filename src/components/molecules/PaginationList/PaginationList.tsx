@@ -1,4 +1,4 @@
-import { List, Pagination } from 'antd';
+import { Empty, List, Pagination } from 'antd';
 
 import { PaginationItem } from '../../atoms/PaginationItem/PaginationItem';
 import { ListType } from '../../../utils/types';
@@ -26,23 +26,29 @@ export const PaginationList = <T,>({
 }: PaginationListProps<T>) => {
   return (
     <div>
-      <List
-        loading={isFetching}
-        dataSource={data}
-        renderItem={(renderItem: T) => (
-          <PaginationItem
-            type={type}
-            renderItem={renderItem}
-            onClick={onClick}
+      {!isFetching && data.length === 0 ? (
+        <Empty description='Нет данных' />
+      ) : (
+        <>
+          <List
+            loading={isFetching}
+            dataSource={data}
+            renderItem={(renderItem: T) => (
+              <PaginationItem
+                type={type}
+                renderItem={renderItem}
+                onClick={onClick}
+              />
+            )}
           />
-        )}
-      />
-      <Pagination
-        current={page}
-        onChange={handlePageChange}
-        total={totalData}
-        pageSize={limit}
-      />
+          <Pagination
+            current={page}
+            onChange={handlePageChange}
+            total={totalData}
+            pageSize={limit}
+          />
+        </>
+      )}
     </div>
   );
 };

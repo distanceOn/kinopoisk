@@ -17,7 +17,7 @@ export const useMoviesService = () => {
   const { data, isFetching, isSuccess } = useGetMoviesQuery(
     search
       ? { page, limit, search }
-      : sortField && sortField.length > 0
+      : sortField
         ? { page, limit, sortField }
         : { page, limit }
   );
@@ -46,5 +46,6 @@ export const useMoviesService = () => {
     isFetching,
     handlePageChange,
     handleSortChange,
+    sortField,
   };
 };

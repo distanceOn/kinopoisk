@@ -8,6 +8,7 @@ export type Movie = {
 };
 
 export type Person = {
+  enName: string;
   description: string;
   name: string;
   photo: string;

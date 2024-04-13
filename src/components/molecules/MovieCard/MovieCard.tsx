@@ -1,4 +1,5 @@
 import { Card, Col, Image, Rate, Row } from 'antd';
+import Placeholder from '../../../app/assets/imgs/placeholder.png';
 
 type MovieCardProps = {
   isFetching: boolean;
@@ -18,6 +19,9 @@ export const MovieCard = ({
   totalRating,
   poster,
 }: MovieCardProps) => {
+  const imageUrl = poster?.url || Placeholder;
+  const previewUrl = poster?.previewUrl || Placeholder;
+
   return (
     <Card
       loading={isFetching}
@@ -27,8 +31,8 @@ export const MovieCard = ({
         <Image
           preview={false}
           alt={name}
-          src={poster.url}
-          fallback={poster.previewUrl}
+          src={imageUrl}
+          fallback={previewUrl}
         />
       }
     >

@@ -13,6 +13,7 @@ export const MoviesList = () => {
     isFetching,
     handlePageChange,
     handleSortChange,
+    sortField,
   } = useMoviesService();
 
   const { goToMovie } = useNav();
@@ -20,7 +21,7 @@ export const MoviesList = () => {
   return (
     <div>
       <Search />
-      <MoviesFilter handleSortChange={handleSortChange} />
+      <MoviesFilter value={sortField} handleSortChange={handleSortChange} />
       <PaginationList
         type='movies'
         data={movies}
