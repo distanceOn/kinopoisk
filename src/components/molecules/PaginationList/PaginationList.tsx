@@ -2,7 +2,6 @@ import { List, Pagination } from 'antd';
 
 import { PaginationItem } from '../../atoms/PaginationItem/PaginationItem';
 import { ListType } from '../../../utils/types';
-import { useEffect } from 'react';
 
 type PaginationListProps<T> = {
   type: ListType;
@@ -25,10 +24,6 @@ export const PaginationList = <T,>({
   handlePageChange,
   onClick,
 }: PaginationListProps<T>) => {
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
   return (
     <div>
       <List
