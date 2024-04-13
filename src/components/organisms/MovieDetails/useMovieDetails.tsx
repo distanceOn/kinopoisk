@@ -8,7 +8,7 @@ export const useMovieDetails = () => {
   const { currentPage, setCurrentPage, limit, handlePageChange } =
     usePagination();
 
-  const { isFetching } = useMovieService({ page: currentPage, limit });
+  const { isFetching } = useMovieService();
   const {
     name,
     alternativeName,

@@ -38,13 +38,11 @@ export type SimilarMovie = {
   name: string;
   poster: {
     url: string;
-    previewUrl: string
+    previewUrl: string;
   };
 };
 
 export type getReviewsType = {
-  page: number;
-  limit: number;
   id: number;
 };
 

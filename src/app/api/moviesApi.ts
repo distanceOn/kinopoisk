@@ -27,12 +27,10 @@ export const moviesApi = baseApi.injectEndpoints({
       query: id => `movie/${id}`,
     }),
     getReviews: build.query({
-      query: ({ page, limit, id }: getReviewsType) =>
-        `review?page=${page}&limit=${limit}&id=${id}`,
+      query: ({ id }: getReviewsType) => `review?page=1&limit=10&id=${id}`,
     }),
     getPosters: build.query({
-      query: ({ page, limit, id }) =>
-        `image?page=${page}&limit=${limit}&movieId=${id}`,
+      query: ({ id }) => `image?page=1&limit=10&movieId=${id}`,
     }),
   }),
 });

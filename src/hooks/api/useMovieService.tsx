@@ -13,26 +13,16 @@ import {
   setReviews,
 } from '../../app/reducers/movieSlice';
 
-export const useMovieService = ({
-  page,
-  limit,
-}: {
-  page: number;
-  limit: number;
-}) => {
+export const useMovieService = () => {
   const dispatch = useAppDispatch();
 
   const { id } = useParams();
 
   const { data, isFetching, isSuccess } = useGetMovieQuery(id);
   const { data: reviewsData, isSuccess: reviewsSuccess } = useGetReviewsQuery({
-    page,
-    limit,
     id: Number(id),
   });
   const { data: postersData, isSuccess: postersSuccess } = useGetPostersQuery({
-    page,
-    limit,
     id: Number(id),
   });
 
