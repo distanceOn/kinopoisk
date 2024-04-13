@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { ListType } from '../../../utils/types';
-import { useAppSelector } from '../../../app/reduxHooks';
-import { useMovieService } from '../../../hooks/api/useMovieService';
-import { usePagination } from '../../../hooks/usePagination';
+import { ListType } from '../../utils/types';
+import { useAppSelector } from '../../app/reduxHooks';
+import { useMovieService } from '../../hooks/api/useMovieService';
+import { usePagination } from '../../hooks/usePagination';
 
 export const useMovieDetails = () => {
   const { currentPage, setCurrentPage, limit, handlePageChange } =
