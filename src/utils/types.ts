@@ -7,4 +7,12 @@ export type Movie = {
   ageRating: number | null;
 };
 
+export type Person = {
+  description: string;
+  name: string;
+  photo: string;
+};
+
+export type ListType = 'movies' | 'actors' | 'reviews' | 'seasons';
+
 export type SortType = 'year' | 'countries.name' | 'ageRating';

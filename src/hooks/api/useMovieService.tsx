@@ -6,9 +6,8 @@ import { resetMovie, setMovie } from '../../app/reducers/movieSlice';
 
 export const useMovieService = () => {
   const dispatch = useAppDispatch();
-  const { name, description, rating, poster } = useAppSelector(
-    state => state.movie
-  );
+  const { name, description, rating, poster, persons, seasonsInfo } =
+    useAppSelector(state => state.movie);
   const { id } = useParams();
 
   const { data, isFetching, isSuccess } = useGetMovieQuery(id);
@@ -19,9 +18,17 @@ export const useMovieService = () => {
       console.log(data);
       dispatch(setMovie(data));
     }
-  }, [data, isFetching]);
+  }, [data, isSuccess]);
 
   const totalRating = rating.imdb !== 0 ? rating.imdb : rating.kp;
 
-  return { isFetching, name, description, totalRating, poster };
+  return {
+    isFetching,
+    name,
+    description,
+    totalRating,
+    poster,
+    persons,
+    seasonsInfo,
+  };
 };

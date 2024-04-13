@@ -1,10 +1,23 @@
 import { Card, Col, Image, Rate, Row } from 'antd';
-import { useMovieService } from '../../../hooks/api/useMovieService';
 
-export const MovieCard = () => {
-  const { isFetching, name, description, totalRating, poster } =
-    useMovieService();
+type MovieCardProps = {
+  isFetching: boolean;
+  name: string;
+  description: string;
+  totalRating: number;
+  poster: {
+    url: string;
+    previewUrl: string;
+  };
+};
 
+export const MovieCard = ({
+  isFetching,
+  name,
+  description,
+  totalRating,
+  poster,
+}: MovieCardProps) => {
   return (
     <Card
       loading={isFetching}

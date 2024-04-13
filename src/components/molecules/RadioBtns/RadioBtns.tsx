@@ -1,11 +1,12 @@
 import { Radio, RadioChangeEvent } from 'antd';
+import { ListType } from '../../../utils/types';
 
 export const RadioBtns = ({
   value,
   onChange,
 }: {
   value: string;
-  onChange: (value: string) => void;
+  onChange: (value: ListType) => void;
 }) => {
   const handleChange = (e: RadioChangeEvent) => {
     onChange(e.target.value);
