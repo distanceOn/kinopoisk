@@ -18,6 +18,7 @@ export const useMovieDetails = () => {
     isSeries,
     seasonsInfo,
     reviews,
+    posters,
   } = useAppSelector(state => state.movie);
 
   const totalRating = rating.imdb !== 0 ? rating.imdb / 2 : rating.kp / 2;
@@ -59,5 +60,6 @@ export const useMovieDetails = () => {
     handlePageChange,
     handleClick,
     isSeries,
+    posters,
   };
 };

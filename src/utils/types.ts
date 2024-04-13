@@ -26,6 +26,12 @@ export type Review = {
   type: string;
 };
 
+export type Poster = {
+  id: string;
+  url: string;
+  previewUrl: string;
+};
+
 export type getReviewsType = {
   page: number;
   limit: number;

@@ -1,3 +1,5 @@
+import { Spin } from 'antd';
+import { ImgCarousel } from '../../molecules/ImgCarousel/ImgCarousel';
 import { MovieCard } from '../../molecules/MovieCard/MovieCard';
 import { PaginationList } from '../../molecules/PaginationList/PaginationList';
 import { RadioBtns } from '../../molecules/RadioBtns/RadioBtns';
@@ -18,9 +20,12 @@ export const MovieDetails = () => {
     handlePageChange,
     handleClick,
     isSeries,
+    posters,
   } = useMovieDetails();
 
-  return (
+  return isFetching ? (
+    <Spin />
+  ) : (
     <div>
       <MovieCard
         isFetching={isFetching}
@@ -29,6 +34,7 @@ export const MovieDetails = () => {
         totalRating={totalRating}
         poster={poster}
       />
+      <ImgCarousel data={posters} />
       <RadioBtns
         isSeries={isSeries}
         onChange={handleChangeDetails}

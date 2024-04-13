@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { Poster } from '../../utils/types';
 
 type movieState = {
   name: string;
@@ -15,6 +16,7 @@ type movieState = {
     previewUrl: string;
   };
   reviews: [];
+  posters: Poster[];
 };
 
 const initialState: movieState = {
@@ -32,6 +34,7 @@ const initialState: movieState = {
     previewUrl: '',
   },
   reviews: [],
+  posters: [],
 };
 
 export const movieSlice = createSlice({
@@ -50,10 +53,14 @@ export const movieSlice = createSlice({
     setReviews: (state, { payload }) => {
       state.reviews = payload;
     },
+    setPosters: (state, { payload }) => {
+      state.posters = payload;
+    },
     resetMovie: () => initialState,
   },
 });
 
-export const { setMovie, setReviews, resetMovie } = movieSlice.actions;
+export const { setMovie, setReviews, resetMovie, setPosters } =
+  movieSlice.actions;
 
 export const movieReducer = movieSlice.reducer;
