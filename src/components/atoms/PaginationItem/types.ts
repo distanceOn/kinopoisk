@@ -6,7 +6,7 @@ export type PaginationItemProps<T> = {
   onClick: (id: number) => void;
 };
 
-export type MovieItemProps<T> = {
+export type ItemProps<T> = {
   renderItem: T;
   onClick: (id: number) => void;
 };

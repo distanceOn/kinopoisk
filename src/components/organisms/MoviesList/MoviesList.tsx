@@ -4,7 +4,6 @@ import { PaginationList } from '../../molecules/PaginationList/PaginationList';
 import { useNav } from '../../../hooks/useNav';
 
 import S from './MoviesList.module.scss';
-import { Spin } from 'antd';
 import { FullSpin } from '../../atoms/FullSpin/FullSpin';
 
 export const MoviesList = () => {

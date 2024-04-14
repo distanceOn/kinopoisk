@@ -1,0 +1,21 @@
+.container {
+  padding-top: 10px;
+}
+
+.posters {
+  max-height: 30vh;
+}
+
+.similar__text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.details {
+  padding: 5px;
+  background-color: #fff;
+  max-height: 85vh;
+  overflow-y: auto;
+  border-radius: 10px;
+}

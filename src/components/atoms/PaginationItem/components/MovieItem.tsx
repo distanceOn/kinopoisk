@@ -1,5 +1,5 @@
 import { Card, Image, List, Spin } from 'antd';
-import { MovieItemProps } from '../types';
+import { ItemProps } from '../types';
 import { Movie } from '../../../../utils/types';
 import Placeholder from '../../../../app/assets/imgs/placeholder.png';
 import Meta from 'antd/es/card/Meta';
@@ -7,7 +7,7 @@ import { truncate } from 'lodash';
 
 import S from './styles.module.scss';
 
-export const MovieItem = <T,>({ renderItem, onClick }: MovieItemProps<T>) => {
+export const MovieItem = <T,>({ renderItem, onClick }: ItemProps<T>) => {
   const { id, name, alternativeName, year, countries, ageRating, poster } =
     renderItem as Movie;
 

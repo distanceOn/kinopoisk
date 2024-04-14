@@ -1,8 +1,8 @@
-import { Image, Spin } from 'antd';
+import { Image } from 'antd';
 import { Btn } from '../../components/atoms/Btn/Btn';
 import { useMovieDetails } from './useMovieDetails';
 import { useNav } from '../../hooks/useNav';
-import { MovieCard } from '../../components/molecules/MovieCard/MovieCard';
+import { MovieCard } from '../../components/atoms/MovieCard/MovieCard';
 import { ImgCarousel } from '../../components/molecules/ImgCarousel/ImgCarousel';
 import { RadioPagination } from '../../components/organisms/RadioPagination/RadioPagination';
 import { DetailsTemplate } from '../../components/templates/DetailsTemplate/DetailsTemplate';

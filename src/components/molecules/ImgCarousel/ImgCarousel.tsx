@@ -10,7 +10,7 @@ export const ImgCarousel = ({ type, data }: PosterCarouselProps) => {
 
   return (
     <Carousel
-      style={{ width: '100%', height: '100%' }}
+      className={S.carousel}
       autoplay
       dotPosition='top'
       fade

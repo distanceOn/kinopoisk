@@ -1,6 +1,8 @@
 import { Card, Rate, Row, Typography } from 'antd';
 import { MovieCardProps } from './types';
 
+import S from './MovieCard.module.scss';
+
 export const MovieCard = ({
   isFetching,
   name,
@@ -8,7 +10,7 @@ export const MovieCard = ({
   totalRating,
 }: MovieCardProps) => {
   return (
-    <Card style={{ width: '100%' }} loading={isFetching} hoverable>
+    <Card className={S.card} loading={isFetching} >
       <Card.Meta
         title={
           <Row align='middle' justify='space-evenly'>
