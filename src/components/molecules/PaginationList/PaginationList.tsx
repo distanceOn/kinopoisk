@@ -12,7 +12,19 @@ export const PaginationList = <T,>({
   isFetching,
   handlePageChange,
   onClick,
+  grid,
 }: PaginationListProps<T>) => {
+  const gridProps = grid
+    ? {
+        gutter: 16,
+        xs: 1,
+        sm: 2,
+        md: 4,
+        lg: 4,
+        xl: 6,
+        xxl: 3,
+      }
+    : undefined;
   return (
     <div>
       {!isFetching && data.length === 0 ? (
@@ -20,6 +32,7 @@ export const PaginationList = <T,>({
       ) : (
         <>
           <List
+            grid={gridProps}
             loading={isFetching}
             dataSource={data}
             renderItem={(renderItem: T) => (

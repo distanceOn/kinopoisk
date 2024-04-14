@@ -5,6 +5,10 @@ export type Movie = {
   year: number;
   countries: { name: string }[];
   ageRating: number | null;
+  poster: {
+    url: string;
+    previewUrl: string;
+  };
 };
 
 export type Person = {

@@ -1,6 +1,7 @@
 import { List } from 'antd';
-import { Movie, Person, Review, Season } from '../../../utils/types';
+import { Person, Review, Season } from '../../../utils/types';
 import { PaginationItemProps } from './types';
+import { MovieItem } from './components/MovieItem';
 
 export const PaginationItem = <T,>({
   type,
@@ -8,17 +9,7 @@ export const PaginationItem = <T,>({
   onClick,
 }: PaginationItemProps<T>) => {
   if (type === 'movies') {
-    const { id, name, alternativeName, year, countries, ageRating } =
-      renderItem as Movie;
-
-    return (
-      <List.Item onClick={() => onClick(id)}>
-        имя {name ? name : alternativeName} <br />
-        год {year} <br />
-        страны {countries.map(country => country.name).join(', ')} <br />
-        возрастной рейтинг {ageRating ? ageRating : 'не указан'}
-      </List.Item>
-    );
+    return <MovieItem renderItem={renderItem} onClick={onClick} />;
   }
 
   if (type === 'actors') {

@@ -29,6 +29,7 @@ export const MoviesList = () => {
         limit={limit}
         totalData={totalMovies}
         onClick={goToMovie}
+        grid={true}
       />
     </div>
   );
