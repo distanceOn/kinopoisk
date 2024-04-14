@@ -26,6 +26,7 @@ export const MovieItem = <T,>({ renderItem, onClick }: MovieItemProps<T>) => {
         size='small'
         cover={
           <Image
+            width={'100%'}
             className={S.image}
             placeholder={
               <div className={S.spin}>
@@ -44,7 +45,7 @@ export const MovieItem = <T,>({ renderItem, onClick }: MovieItemProps<T>) => {
             <>
               {year} <br />
               {totalCountry} <br />
-              Возрастной рейтинг: {ageRating ? ageRating : 'не указан'}
+              Возрастной рейтинг: {ageRating ? ageRating : 'нет'}
             </>
           }
         />

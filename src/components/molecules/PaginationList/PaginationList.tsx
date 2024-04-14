@@ -3,6 +3,8 @@ import { Empty, List, Pagination } from 'antd';
 import { PaginationItem } from '../../atoms/PaginationItem/PaginationItem';
 import { PaginationListProps } from './types';
 
+import './styles.scss';
+
 export const PaginationList = <T,>({
   type,
   data,
@@ -48,6 +50,7 @@ export const PaginationList = <T,>({
             onChange={handlePageChange}
             total={totalData}
             pageSize={limit}
+            responsive={true}
           />
         </>
       )}
