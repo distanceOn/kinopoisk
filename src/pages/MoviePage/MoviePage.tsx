@@ -1,4 +1,4 @@
-import { Spin } from 'antd';
+import { Image, Spin } from 'antd';
 import { Btn } from '../../components/atoms/Btn/Btn';
 import { useMovieDetails } from './useMovieDetails';
 import { useNav } from '../../hooks/useNav';
@@ -7,6 +7,10 @@ import { ImgCarousel } from '../../components/molecules/ImgCarousel/ImgCarousel'
 import { RadioPagination } from '../../components/organisms/RadioPagination/RadioPagination';
 import { DetailsTemplate } from '../../components/templates/DetailsTemplate/DetailsTemplate';
 import { useMovieService } from '../../hooks/api/useMovieService';
+import Placeholder from '../../app/assets/imgs/placeholder.png';
+
+import S from './MoviePage.module.scss';
+import { FullSpin } from '../../components/atoms/FullSpin/FullSpin';
 
 export const MoviePage = () => {
   const {
@@ -29,15 +33,19 @@ export const MoviePage = () => {
   const { isFetching } = useMovieService();
 
   const { goToMovies } = useNav();
+
+  const imageUrl = poster?.url || Placeholder;
+
   return (
-    <div>
+    <div className={S.page}>
       <Btn text='На главную' handleClick={goToMovies} />
       {isFetching ? (
-        <Spin />
+        <FullSpin />
       ) : (
         <>
           <DetailsTemplate
-            card={
+            image={<Image preview={false} loading='lazy' src={imageUrl} />}
+            text={
               <MovieCard
                 isFetching={isFetching}
                 name={totalName}
@@ -48,17 +56,19 @@ export const MoviePage = () => {
             }
             carousel1={<ImgCarousel type='poster' data={posters} />}
             carousel2={<ImgCarousel type='similar' data={similarMovies} />}
-          />
-          <RadioPagination
-            isSeries={isSeries}
-            handleChangeDetails={handleChangeDetails}
-            selectedValue={selectedValue}
-            totalData={totalData}
-            currentPage={currentPage}
-            limit={limit}
-            handlePageChange={handlePageChange}
-            isFetching={isFetching}
-            handleClick={handleClick}
+            details={
+              <RadioPagination
+                isSeries={isSeries}
+                handleChangeDetails={handleChangeDetails}
+                selectedValue={selectedValue}
+                totalData={totalData}
+                currentPage={currentPage}
+                limit={limit}
+                handlePageChange={handlePageChange}
+                isFetching={isFetching}
+                handleClick={handleClick}
+              />
+            }
           />
         </>
       )}

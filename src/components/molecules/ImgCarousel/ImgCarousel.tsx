@@ -10,7 +10,7 @@ export const ImgCarousel = ({ type, data }: PosterCarouselProps) => {
 
   return (
     <Carousel
-      style={{ width: '30vw', height: 'fit-content', maxHeight: '20vw' }}
+      style={{ width: '100%', height: '100%' }}
       autoplay
       dotPosition='top'
       fade
@@ -20,7 +20,7 @@ export const ImgCarousel = ({ type, data }: PosterCarouselProps) => {
       }}
     >
       {data.map(item => (
-        <CarouselItem type={type} item={item} />
+        <CarouselItem key={item.id} type={type} item={item} />
       ))}
     </Carousel>
   );

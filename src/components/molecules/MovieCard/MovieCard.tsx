@@ -1,5 +1,4 @@
-import { Card, Col, Image, Rate, Row } from 'antd';
-import Placeholder from '../../../app/assets/imgs/placeholder.png';
+import { Card, Rate, Row, Typography } from 'antd';
 import { MovieCardProps } from './types';
 
 export const MovieCard = ({
@@ -7,31 +6,20 @@ export const MovieCard = ({
   name,
   description,
   totalRating,
-  poster,
 }: MovieCardProps) => {
-  const imageUrl = poster?.url || Placeholder;
-  const previewUrl = poster?.previewUrl || Placeholder;
-
   return (
-    <Card
-      loading={isFetching}
-      hoverable
-      style={{ width: 240 }}
-      cover={
-        <Image
-          preview={false}
-          alt={name}
-          src={imageUrl}
-          fallback={previewUrl}
-        />
-      }
-    >
-      <Card.Meta title={name} description={description} />
-      <Row style={{ marginTop: 10 }}>
-        <Col span={12}>
-          <Rate disabled value={totalRating} />
-        </Col>
-      </Row>
+    <Card style={{ width: '100%' }} loading={isFetching} hoverable>
+      <Card.Meta
+        title={
+          <Row align='middle' justify='space-evenly'>
+            <Typography.Title level={4} style={{ margin: 0 }}>
+              {name}
+            </Typography.Title>
+            <Rate disabled value={totalRating} />
+          </Row>
+        }
+        description={description}
+      />
     </Card>
   );
 };

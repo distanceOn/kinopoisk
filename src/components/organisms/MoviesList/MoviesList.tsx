@@ -5,6 +5,7 @@ import { useNav } from '../../../hooks/useNav';
 
 import S from './MoviesList.module.scss';
 import { Spin } from 'antd';
+import { FullSpin } from '../../atoms/FullSpin/FullSpin';
 
 export const MoviesList = () => {
   const {
@@ -21,18 +22,7 @@ export const MoviesList = () => {
   const { goToMovie } = useNav();
 
   return isFetching && movies.length === 0 ? (
-    <div
-      style={{
-        position: 'absolute',
-        width: '100vw',
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <Spin size='large' />
-    </div>
+    <FullSpin />
   ) : (
     <div className={S.container}>
       <MoviesFilter value={sortField} handleSortChange={handleSortChange} />
