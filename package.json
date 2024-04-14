@@ -19,7 +19,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=7070 react-scripts start",
     "build": "react-scripts build",
     "test": "jest",
     "eject": "react-scripts eject"
