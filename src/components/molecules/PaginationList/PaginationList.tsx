@@ -3,6 +3,9 @@ import { Empty, List, Pagination } from 'antd';
 import { PaginationItem } from '../../atoms/PaginationItem/PaginationItem';
 import { PaginationListProps } from './types';
 
+import './styles.scss';
+import { gridObject } from './utils';
+
 export const PaginationList = <T,>({
   type,
   data,
@@ -12,7 +15,10 @@ export const PaginationList = <T,>({
   isFetching,
   handlePageChange,
   onClick,
+  grid,
 }: PaginationListProps<T>) => {
+  const gridProps = grid ? gridObject : undefined;
+
   return (
     <div>
       {!isFetching && data.length === 0 ? (
@@ -20,6 +26,7 @@ export const PaginationList = <T,>({
       ) : (
         <>
           <List
+            grid={gridProps}
             loading={isFetching}
             dataSource={data}
             renderItem={(renderItem: T) => (
@@ -35,6 +42,7 @@ export const PaginationList = <T,>({
             onChange={handlePageChange}
             total={totalData}
             pageSize={limit}
+            responsive={true}
           />
         </>
       )}

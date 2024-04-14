@@ -10,12 +10,7 @@ export const CarouselItem = ({ type, item }: CarouselItemProps) => {
     const { id, url, previewUrl } = item as Poster;
     return (
       <div key={id}>
-        <Image
-          src={url}
-          fallback={previewUrl}
-          preview={false}
-          style={{ width: '100%', height: 'auto' }}
-        />
+        <Image src={url} fallback={previewUrl} preview={false} />
       </div>
     );
   }
@@ -30,7 +25,6 @@ export const CarouselItem = ({ type, item }: CarouselItemProps) => {
           src={poster.url}
           fallback={poster.previewUrl}
           preview={false}
-          style={{ width: '100%', height: 'auto' }}
         />
       </div>
     );

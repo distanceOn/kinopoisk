@@ -3,6 +3,9 @@ import { MoviesFilter } from '../../molecules/MoviesFilter/MoviesFilter';
 import { PaginationList } from '../../molecules/PaginationList/PaginationList';
 import { useNav } from '../../../hooks/useNav';
 
+import S from './MoviesList.module.scss';
+import { FullSpin } from '../../atoms/FullSpin/FullSpin';
+
 export const MoviesList = () => {
   const {
     movies,
@@ -17,8 +20,10 @@ export const MoviesList = () => {
 
   const { goToMovie } = useNav();
 
-  return (
-    <div>
+  return isFetching && movies.length === 0 ? (
+    <FullSpin />
+  ) : (
+    <div className={S.container}>
       <MoviesFilter value={sortField} handleSortChange={handleSortChange} />
       <PaginationList
         type='movies'
@@ -29,6 +34,7 @@ export const MoviesList = () => {
         limit={limit}
         totalData={totalMovies}
         onClick={goToMovie}
+        grid={true}
       />
     </div>
   );

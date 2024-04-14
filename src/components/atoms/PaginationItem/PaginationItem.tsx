@@ -1,6 +1,8 @@
-import { List } from 'antd';
-import { Movie, Person, Review, Season } from '../../../utils/types';
 import { PaginationItemProps } from './types';
+import { MovieItem } from './components/MovieItem';
+import { ActorItem } from './components/ActorItem';
+import { SeasonItem } from './components/SeasonItem';
+import { ReviewItem } from './components/ReviewItem';
 
 export const PaginationItem = <T,>({
   type,
@@ -8,55 +10,19 @@ export const PaginationItem = <T,>({
   onClick,
 }: PaginationItemProps<T>) => {
   if (type === 'movies') {
-    const { id, name, alternativeName, year, countries, ageRating } =
-      renderItem as Movie;
-
-    return (
-      <List.Item onClick={() => onClick(id)}>
-        имя {name ? name : alternativeName} <br />
-        год {year} <br />
-        страны {countries.map(country => country.name).join(', ')} <br />
-        возрастной рейтинг {ageRating ? ageRating : 'не указан'}
-      </List.Item>
-    );
+    return <MovieItem renderItem={renderItem} onClick={onClick} />;
   }
 
   if (type === 'actors') {
-    const { description, name, photo, enName } = renderItem as Person;
-
-    return (
-      <List.Item>
-        {/* <img src={photo} alt={name} /> */}
-        <br />
-        {name ? name : enName}
-        <br />
-        {description}
-      </List.Item>
-    );
+    return <ActorItem renderItem={renderItem} onClick={onClick} />;
   }
 
   if (type === 'seasons') {
-    const { episodesCount, number } = renderItem as Season;
-
-    return (
-      <List.Item>
-        Сезон: {number} <br />
-        Количество серий: {episodesCount}
-      </List.Item>
-    );
+    return <SeasonItem renderItem={renderItem} onClick={onClick} />;
   }
 
   if (type === 'reviews') {
-    const { author, date, review, type } = renderItem as Review;
-
-    return (
-      <List.Item>
-        {author} <br />
-        {date} <br />
-        {review} <br />
-        {type}
-      </List.Item>
-    );
+    return <ReviewItem renderItem={renderItem} onClick={onClick} />;
   }
 
   return null;

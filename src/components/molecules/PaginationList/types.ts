@@ -9,4 +9,5 @@ export type PaginationListProps<T> = {
   isFetching: boolean;
   handlePageChange: (newPage: number, newPageSize: number) => void;
   onClick: (id: number) => void;
+  grid?: boolean;
 };
